@@ -1,4 +1,5 @@
-import express, { request } from "express";
+import express from "express";
+import axios from "axios";
 import { ProductsData } from "./helpers/static_data";
 const app = express();
 app.use(express.json());
@@ -18,7 +19,7 @@ app.get("/reco/product-card/click/:index", async (req, res) => {
     const { productIds } = req.query;
     if (!productIds) throw new Error("Invalid product id's");
 
-    const strProdIds: any = (productIds as string[]).join(",");
+    const strProdIds: any = productIds as string[];
     const currentProd = ProductsData[strProdIds][parseInt(index, 10)];
 
     const productUrl = `https://${SHOP}/products/${currentProd.handle}`;
@@ -35,12 +36,16 @@ app.get("/reco/product-card/render/:index", async (req, res) => {
     const { productIds } = req.query;
     if (!productIds) throw new Error("Invalid product id's");
 
-    const strProdIds: any = (productIds as string[]).join(",");
+    const strProdIds: any = productIds as string[];
 
     const currentProd = ProductsData[strProdIds][parseInt(index, 10)];
 
-    const response = await request.get(currentProd.image);
-    console.log(response);
+    console.log(currentProd);
+    const response = await axios.get(currentProd.image, {
+      responseType: "arraybuffer",
+    });
+    res.set("Content-Type", "image/jpeg");
+    res.send(response.data);
   } catch (error) {
     if (error instanceof Error) res.status(500).send(error.message);
     return;
