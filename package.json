@@ -8,11 +8,8 @@
     "build": "tsc",
     "start": "node index.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Sourabh-Semalty/shopify_transaction_email_ts.git"
-  },
-  "author": "",
+  "repository": "git+https://github.com/Sourabh-Semalty/shopify_transaction_email_ts.git",
+  "author": "Sourabh-Semalty <semaltysourabh@gmail.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Sourabh-Semalty/shopify_transaction_email_ts/issues"
