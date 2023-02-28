@@ -6,9 +6,8 @@
   "scripts": {
     "dev": "nodemon index.ts",
     "build": "tsc",
-    "start": "node index.js"
+    "start": "ts-node-esm index.ts"
   },
-  "type": "module",
   "repository": "git+https://github.com/Sourabh-Semalty/shopify_transaction_email_ts.git",
   "author": "Sourabh-Semalty <semaltysourabh@gmail.com>",
   "license": "ISC",
